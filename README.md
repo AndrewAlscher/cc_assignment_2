@@ -80,11 +80,13 @@ This job synchronizes the producer and consumer databases using a batch approach
 
 ## Databases
 
+Databases stores images along with their related information.
+
 ### Producer DB
 
 #### Description
 
-This database stores images along with their related information.
+This database is a part of Leaf Image Management System and stores images along with their related information, which are produced.
 
 #### Kubernetes Configuration Files:
 
@@ -93,6 +95,8 @@ This database stores images along with their related information.
 ### Consumer Db
 
 #### Description
+
+This database stores images along with their related information, which are consumed.
 
 #### Kubernetes Configuration Files:
 
