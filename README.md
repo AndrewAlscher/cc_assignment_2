@@ -58,7 +58,15 @@ This job identifies diseases for one image every 100 seconds.
 
 This job continuously updates information and can also activate and delete images.
 
+This service comprises three distinct jobs:
+
+- Job to activate or deactivate images, which runs 300 seconds.
+- Job to update image metadata, which runs every 300 seconds.
+- Job to delete images, which runs every 700 seconds.
+
 #### Kubernetes Configuration Files:
+
+[basic_services/jobs/inner_jobs/users](basic_services/jobs/inner_jobs/users)
 
 ### Db Synchronizer
 
@@ -108,17 +116,20 @@ sh open.stg.sh
 Each service has been deployed with ClusterIP type:
 
 - image_api: 30001
+- image_api_prometheus: 30009
 - image_analizer_api: 30002
 - camera: 30003
 - leaf_disease_recognizer: 30004
 - users: 30005
 - db_synchronizer: 30006
+- db_synchronizer_prometheus: 30010
 - consumer_db: 30007
 - producer_db: 30008
+- kafka: 9092
 
-## Cloud
+## Cloud (GCP)
 
-#
+1. Create a GKE cluster
 
 # Delete Instructions
 
