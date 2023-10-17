@@ -2,7 +2,7 @@
 
 # Services
 
-![The entire system](images/2023.10.09 - 1.jpg)
+![The entire system](images/2023.10.09%20-%201.jpg)
 
 The detailed information about system architecture can be found in the report/cc_assignment_2_overview.pdf file.
 
