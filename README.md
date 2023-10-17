@@ -22,23 +22,69 @@ This API performs CRUD operations for images using MongoDB and pushes changes to
 
 ### Image Analyzer API
 
-located: basic_services/api/image_analizer_api
+#### Description
+
+This API contains ML models that analyze leaf diseases based on different image representations.
+
+#### Kubernetes Configuration Files:
+
+[basic_services/api/image_analizer_api](basic_services/api/image_analizer_api)
 
 ## Jobs
 
 ### Camera
 
+#### Description
+
+This job automatically generates and uploads new pepper, potato, or tomato photos every 30 seconds.
+
+#### Kubernetes Configuration Files:
+
+[basic_services/jobs/inner_jobs/camera](basic_services/jobs/inner_jobs/camera)
+
 ### Leaf Disease Recognizer
+
+#### Description
+
+This job identifies diseases for one image every 100 seconds.
+
+#### Kubernetes Configuration Files:
+
+[basic_services/jobs/inner_jobs/leaf_disease_recognizer](basic_services/jobs/inner_jobs/leaf_disease_recognizer)
 
 ### Users
 
+#### Description
+
+This job continuously updates information and can also activate and delete images.
+
+#### Kubernetes Configuration Files:
+
 ### Db Synchronizer
+
+#### Description
+
+This job synchronizes the producer and consumer databases using a batch approach.
+
+#### Kubernetes Configuration Files:
 
 ## Databases
 
+### Producer DB
+
+#### Description
+
+This database stores images along with their related information.
+
+#### Kubernetes Configuration Files:
+
+[basic_services/jobs/outer_jobs/db_synchronizer](basic_services/jobs/outer_jobs/db_synchronizer)
+
 ### Consumer Db
 
-### Producer DB
+#### Description
+
+#### Kubernetes Configuration Files:
 
 # Deployment Instructions
 
@@ -46,24 +92,17 @@ located: basic_services/api/image_analizer_api
 
 1. Install minikube
 2. Start minikube
-3. Run the following script: basic_services/start.stg.sh
+3. Run the following script:
+
 <pre>
-
-```
 sh start.stg.sh
-```
-
 </pre>
 
 4. Wait 2-3 minutes until all pods are running and the all the data has been loaded into the databases
 5. You can expose the ports of all services using the foolowing script: open.stg.sh
 
 <pre>
-
-```
 sh open.stg.sh
-```
-
 </pre>
 
 Each service has been deployed with ClusterIP type:
@@ -85,14 +124,10 @@ Each service has been deployed with ClusterIP type:
 
 Locally:
 
-1. Run the following script: basic_services/stop.stg.sh:
+1. Run the following script:
 
 <pre>
-
-```
 sh stop.stg.sh
-```
-
 </pre>
 
 Describe stg/prod
