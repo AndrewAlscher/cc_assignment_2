@@ -28,7 +28,7 @@ This API contains ML models that analyze leaf diseases based on different image 
 
 #### Kubernetes Configuration Files:
 
-[basic_services/api/image_analizer_api](basic_services/api/image_analizer_api)
+[basic_services/api/image_analyzer_api](basic_services/api/image_analyzer_api)
 
 ## Jobs
 
