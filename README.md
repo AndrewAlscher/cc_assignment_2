@@ -6,11 +6,19 @@
 
 For detailed information about the system architecture, please refer to the [overview report](report/cc_assignment_2_overview.pdf).
 
+There is some additional infomration for each service below:
+
 ## APIs
 
 ### Image API
 
-located: basic_services/api/image_api
+#### Description
+
+This API performs CRUD operations for images using MongoDB and pushes changes to Kafka topics.
+
+#### Kubernetes Configuration Files:
+
+[basic_services/api/image_api](basic_services/api/image_api)
 
 ### Image Analyzer API
 
@@ -34,7 +42,7 @@ located: basic_services/api/image_analizer_api
 
 # Deployment Instructions
 
-Locally:
+## Locally
 
 1. Install minikube
 2. Start minikube
@@ -69,7 +77,7 @@ Each service has been deployed with ClusterIP type:
 - consumer_db: 30007
 - producer_db: 30008
 
-Cloud:
+## Cloud
 
 #
 
