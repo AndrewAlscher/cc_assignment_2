@@ -137,6 +137,11 @@ Each service has been deployed with ClusterIP type:
 - producer_db: 30008
 - kafka: 9092
 
+6. You can close the ports using the following script:
+<pre>
+sh close.stg.sh
+</pre>
+
 ## Cloud (GCP)
 
 1. Create a GKE cluster
