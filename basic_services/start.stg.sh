@@ -25,7 +25,6 @@ cd ../../
 echo "Deploying the databases"
 cd mongodb
 
-
 echo "Deploying the consumer database"
 cd consumer_db/plant_db/dev
 
@@ -33,7 +32,6 @@ kubectl apply -f 00-mongodb-consumer-deployment.dev.yaml
 kubectl apply -f 01-mongodb-consumer-service.dev.yaml
 
 cd ../../../
-
 
 echo "Deploying the producer database"
 cd producer_db/plant_db/dev
@@ -54,9 +52,7 @@ cd image_api/stg
 kubectl apply -f 00-image-api-deployment.stg.yaml
 kubectl apply -f 01-image-api-service.stg.yaml
 
-
 cd ../../
-
 
 echo "Deploying the image analyzer api"
 cd image_analyzer_api/stg
@@ -65,6 +61,7 @@ kubectl apply -f 00-image-analyzer-api-deployment.stg.yaml
 kubectl apply -f 01-image-analyzer-api-service.stg.yaml
 
 cd ../../../
+
 
 # Deploy the jobs
 echo "Starting the jobs"
@@ -102,21 +99,7 @@ kubectl apply -f 01-db-synchronizer-service.stg.yaml
 cd ../../../../
 
 
-# Start the services
-# !/bin/bash
-echo "Starting the kafka cluster"
-nohup kubectl port-forward svc/kafka-service 9093:9093 -n leaf-image-management-system > /dev/null 2>&1 &
 
-echo "Starting the services"
-echo "Starting the apis"
-nohup kubectl port-forward svc/image-api 8080:8080 -n leaf-image-management-system > /dev/null 2>&1 &
-nohup kubectl port-forward svc/image-analyzer-api 8080:8081 -n leaf-image-management-system > /dev/null 2>&1 &
-
-echo "Starting the databases"
-nohup kubectl port-forward svc/mongodb-producer 27017:27017 -n leaf-image-management-system > /dev/null 2>&1 &
-nohup kubectl port-forward svc/mongodb-consumer 27018:27017 -n leaf-image-management-system > /dev/null 2>&1 &
-
-echo "Starting the jobs"
 
 
 
