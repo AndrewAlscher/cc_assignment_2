@@ -2,6 +2,10 @@
 
 # Services
 
+![The entire system](images/2023.10.09 - 1.jpg)
+
+The detailed information about system architecture can be found in the report/cc_assignment_2_overview.pdf file.
+
 ## APIs
 
 ### Image API
@@ -35,8 +39,24 @@ Locally:
 1. Install minikube
 2. Start minikube
 3. Run the following script: basic_services/start.stg.sh
+<pre>
+
+```
+sh start.stg.sh
+```
+
+</pre>
+
 4. Wait 2-3 minutes until all pods are running and the all the data has been loaded into the databases
-5. You can expose the ports of all services using the foolowing script: basic_services/open.stg.sh
+5. You can expose the ports of all services using the foolowing script: open.stg.sh
+
+<pre>
+
+```
+sh open.stg.sh
+```
+
+</pre>
 
 Each service has been deployed with ClusterIP type:
 
@@ -57,7 +77,15 @@ Cloud:
 
 Locally:
 
-1. Run the following script: basic_services/stop.stg.sh
+1. Run the following script: basic_services/stop.stg.sh:
+
+<pre>
+
+```
+sh stop.stg.sh
+```
+
+</pre>
 
 Describe stg/prod
 
