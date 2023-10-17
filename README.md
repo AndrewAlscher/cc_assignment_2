@@ -1,1 +1,1 @@
-# cc_assignment_2
+# CC Assignment 2

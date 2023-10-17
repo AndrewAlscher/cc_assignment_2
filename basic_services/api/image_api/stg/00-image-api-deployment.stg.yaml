@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "image-api"
+  namespace: "leaf-image-management-system"
+  labels:
+    name: "image-api"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: "image-api"
+  template:
+    metadata:
+      labels:
+        name: "image-api"
+    spec:
+      containers:
+        - name: "image-api"
+          image: "12221994/image_api:latest"
+          env:
+            - name: ENV
+              value: "stg"
+          ports:
+            - containerPort: 8080
+            - containerPort: 8050
+          resources:
+            requests:
+              memory: "1024Mi"
+              cpu: "250m"
+            limits:
+              memory: "1536Mi"
+              cpu: "500m"

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "camera"
+  namespace: "leaf-image-management-system"
+  labels:
+    name: "camera"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: "camera"
+  template:
+    metadata:
+      labels:
+        name: "camera"
+    spec:
+      containers:
+        - name: "camera"
+          image: "12221994/camera_job:latest"
+          env:
+            - name: ENV
+              value: "stg"
+          ports:
+            - containerPort: 5050
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"

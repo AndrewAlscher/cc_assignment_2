@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "users"
+  namespace: "leaf-image-management-system"
+  labels:
+    name: "users"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: "users"
+  template:
+    metadata:
+      labels:
+        name: "users"
+    spec:
+      containers:
+        - name: "users"
+          image: "12221994/users_job:latest"
+          env:
+            - name: ENV
+              value: "stg"
+          ports:
+            - containerPort: 5050
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"

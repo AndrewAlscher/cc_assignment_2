@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "image-analyzer-api"
+  namespace: "leaf-image-management-system"
+  labels:
+    name: "image-analyzer-api"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: "image-analyzer-api"
+  template:
+    metadata:
+      labels:
+        name: "image-analyzer-api"
+    spec:
+      containers:
+        - name: "image-analyzer-api"
+          image: "12221994/image_analyzer_api:latest"
+          env:
+            - name: ENV
+              value: "stg"
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "2048Mi"
+              cpu: "250m"
+            limits:
+              memory: "4096Mi"
+              cpu: "500m"
