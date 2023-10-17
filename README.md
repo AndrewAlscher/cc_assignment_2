@@ -76,6 +76,8 @@ This job synchronizes the producer and consumer databases using a batch approach
 
 #### Kubernetes Configuration Files:
 
+[basic_services/jobs/outer_jobs/db_synchronizer](basic_services/jobs/outer_jobs/db_synchronizer)
+
 ## Databases
 
 ### Producer DB
@@ -86,7 +88,7 @@ This database stores images along with their related information.
 
 #### Kubernetes Configuration Files:
 
-[basic_services/jobs/outer_jobs/db_synchronizer](basic_services/jobs/outer_jobs/db_synchronizer)
+[basic_services/mongodb/producer_db/plant_db](basic_services/databases/producer_db/plant_db)
 
 ### Consumer Db
 
@@ -94,7 +96,11 @@ This database stores images along with their related information.
 
 #### Kubernetes Configuration Files:
 
+[basic_services/mongodb/consumer_db/plant_db](basic_services/databases/consumer_db/plant_db)
+
 # Deployment Instructions
+
+For this project we use .stg files for staging and .prod files for production.
 
 ## Locally
 
@@ -141,8 +147,12 @@ Locally:
 sh stop.stg.sh
 </pre>
 
-Describe stg/prod
+# Task
 
-Describe how to stop
+Based on the [overview report](report/cc_assignment_2_overview.pdf) and the [deployment instructions](#deployment-instructions), you will develop a service, which interacts with this system using and event-driven approach.
 
-Describe what to do
+This assignment is divided into three parts:
+
+- Task 1 [55%]: Develop a service for consuming and logging data from a Kafka cluster. Test and run the application locally. For this purpose you should use .stg files to deploy the system.
+- Task 2 [30%]: Test and run the existing application, the Kafka cluster, and your service on Google Cloud Platform (GCP) using Google Kubernetes Engine (GKE). For this purpose you should use .prod files to deploy the system on GCP.
+- Task 3 [15%]: Compare the bandwidth between the pre-implemented batch processing application and the stream processing you are tasked to implement. For this task you can see the difference between two approaches opening Grafana dashboards for the batch and stream processing processing.
