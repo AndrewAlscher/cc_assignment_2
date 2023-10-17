@@ -123,19 +123,19 @@ sh start.stg.sh
 sh open.stg.sh
 </pre>
 
-Each service has been deployed with ClusterIP type:
+Each service has been deployed to 127.0.0.1 with ClusterIP type:
 
-- image_api: 30001
-- image_api_prometheus: 30009
-- image_analizer_api: 30002
-- camera: 30003
-- leaf_disease_recognizer: 30004
-- users: 30005
-- db_synchronizer: 30006
-- db_synchronizer_prometheus: 30010
-- consumer_db: 30007
-- producer_db: 30008
-- kafka: 9092
+- image_api: 8080
+- image_api_prometheus: 8050
+- image_analizer_api: 8081
+- camera: 5050
+- leaf_disease_recognizer: 5051
+- users: 5052
+- db_synchronizer: 5053
+- db_synchronizer_prometheus: 8051
+- producer_db: 27017
+- consumer_db: 27018
+- kafka: 9093
 
 6. You can close the ports using the following script:
 <pre>
