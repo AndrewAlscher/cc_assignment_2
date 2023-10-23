@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: image-api-monitor
+  namespace: leaf-image-management-system
+  labels:
+    app: "image-api"
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: "image-api"
+  namespaceSelector:
+    matchNames:
+      - leaf-image-management-system
+  endpoints:
+    - port: metrics
+      interval: 15s

@@ -3,16 +3,18 @@ kind: Service
 metadata:
   name: "image-api"
   namespace: "leaf-image-management-system"
+  labels:
+    app: "image-api"
 spec:
   selector:
-    name: "image-api"
+    app: "image-api"
   type: ClusterIP
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
       name: api-port
-    - protocol: TCP
+    - name: metrics
+      protocol: TCP
       port: 8050
       targetPort: 8050
-      name: prometheus-port

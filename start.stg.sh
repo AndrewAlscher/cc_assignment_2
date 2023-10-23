@@ -13,7 +13,7 @@ apply_kubectl() {
 echo "Started deploying the leaf image management system"
 
 echo "Creating the namespace"
-apply_kubectl basic_services/common/00-leaf-image-management-system.yaml
+apply_kubectl basic_services/common/00-leaf-image-management-system-namespace.yaml
 
 
 # Deploy the kafka cluster
@@ -43,7 +43,7 @@ echo "Deploying the image api"
 
 apply_kubectl basic_services/api/image_api/stg/00-image-api-deployment.stg.yaml
 apply_kubectl basic_services/api/image_api/stg/01-image-api-service.stg.yaml
-
+apply_kubectl basic_services/api/image_api/stg/02-image-api-service-monitor.stg.yaml
 
 echo "Deploying the image analyzer api"
 apply_kubectl basic_services/api/image_analyzer_api/stg/00-image-analyzer-api-deployment.stg.yaml

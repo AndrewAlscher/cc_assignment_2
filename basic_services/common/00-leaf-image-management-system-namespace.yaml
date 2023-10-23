@@ -4,3 +4,4 @@ metadata:
   name: "leaf-image-management-system"
   labels:
     name: "leaf-image-management-system"
+    monitored-by: "prometheus"

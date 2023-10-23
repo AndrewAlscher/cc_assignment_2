@@ -4,16 +4,16 @@ metadata:
   name: "image-api"
   namespace: "leaf-image-management-system"
   labels:
-    name: "image-api"
+    app: "image-api"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: "image-api"
+      app: "image-api"
   template:
     metadata:
       labels:
-        name: "image-api"
+        app: "image-api"
     spec:
       containers:
         - name: "image-api"
