@@ -68,5 +68,6 @@ apply_kubectl basic_services/jobs/inner_jobs/leaf_disease_recognizer/stg/01-leaf
 echo "Starting the db synchronizer job"
 apply_kubectl basic_services/jobs/outer_jobs/db_synchronizer/stg/00-db-synchronizer-deployment.stg.yaml
 apply_kubectl basic_services/jobs/outer_jobs/db_synchronizer/stg/01-db-synchronizer-service.stg.yaml
+apply_kubectl basic_services/jobs/outer_jobs/db_synchronizer/stg/02-db-synchronizer-monitor.stg.yaml
 
 echo "Finished deploying the leaf image management system"

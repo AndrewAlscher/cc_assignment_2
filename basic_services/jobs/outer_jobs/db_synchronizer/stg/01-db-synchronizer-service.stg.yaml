@@ -3,16 +3,18 @@ kind: Service
 metadata:
   name: "db-synchronizer"
   namespace: "leaf-image-management-system"
+  labels:
+    app: "db-synchronizer"
 spec:
   selector:
-    name: "db-synchronizer"
+    app: "db-synchronizer"
   type: ClusterIP
   ports:
     - port: 5050
       targetPort: 5050
       protocol: TCP
       name: job-port
-    - protocol: TCP
+    - name: metrics
+      protocol: TCP
       port: 8050
       targetPort: 8050
-      name: prometheus-port

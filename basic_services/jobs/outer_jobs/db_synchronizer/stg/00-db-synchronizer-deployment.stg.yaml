@@ -4,16 +4,16 @@ metadata:
   name: "db-synchronizer"
   namespace: "leaf-image-management-system"
   labels:
-    name: "db-synchronizer"
+    app: "db-synchronizer"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: "db-synchronizer"
+      app: "db-synchronizer"
   template:
     metadata:
       labels:
-        name: "db-synchronizer"
+        app: "db-synchronizer"
     spec:
       containers:
         - name: "db-synchronizer"

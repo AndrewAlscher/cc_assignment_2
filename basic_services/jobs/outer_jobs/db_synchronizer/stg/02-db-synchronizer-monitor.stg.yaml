@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: db-synchronizer-monitor
+  namespace: leaf-image-management-system
+  labels:
+    app: "db-synchronizer"
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: "db-synchronizer"
+  namespaceSelector:
+    matchNames:
+      - leaf-image-management-system
+  endpoints:
+    - port: metrics
+      interval: 15s
