@@ -112,12 +112,12 @@ Metrics allow us to monitor the important aspects of the system, which are relat
 
 This service collects metrics from the system. In our case, we collect metrics from image-api for stream-processing, and db-synchronizer for batch-processing.
 
-## Metrics for image-api:
+#### Metrics for image-api:
 
 - image_api_image - number of images according to their plant, id and disease
 - image_api_image_size - size of images in bytes with metadata
 
-## Metrics for db-synchronizer:
+#### Metrics for db-synchronizer:
 
 - db_synchronizer_job_image - number of images according to their plant, id and disease
 - db_synchronizer_job_image_size - size of images in bytes with metadata
