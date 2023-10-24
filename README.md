@@ -130,7 +130,7 @@ Prometheus is deployed using [Helm](https://helm.sh/) chart. Remember that you s
 
 #### Description
 
-This service visualizes metrics from Prometheus.
+This service visualizes metrics from Prometheus. To login to Grafana use the following credentials: admin (login)/admin(password).
 
 #### Kubernetes Configuration Files:
 
