@@ -102,6 +102,40 @@ This database stores images along with their related information, which are cons
 
 [basic_services/mongodb/consumer_db/plant_db](basic_services/databases/consumer_db/plant_db)
 
+## Metrics
+
+Metrics allow us to monitor the important aspects of the system, which are related to the performance, availability, and reliability.
+
+### Prometheus
+
+#### Description
+
+This service collects metrics from the system. In our case, we collect metrics from image-api for stream-processing, and db-synchronizer for batch-processing.
+
+## Metrics for image-api:
+
+- image_api_image - number of images according to their plant, id and disease
+- image_api_image_size - size of images in bytes with metadata
+
+## Metrics for db-synchronizer:
+
+- db_synchronizer_job_image - number of images according to their plant, id and disease
+- db_synchronizer_job_image_size - size of images in bytes with metadata
+
+#### Kubernetes Configuration Files:
+
+Prometheus is deployed using [Helm](https://helm.sh/) chart. Remember that you should [install](https://helm.sh/docs/intro/quickstart/) Helm before deploying Prometheus.
+
+### Grafana
+
+#### Description
+
+This service visualizes metrics from Prometheus.
+
+#### Kubernetes Configuration Files:
+
+[metrics/grafana](metrics/grafana)
+
 # Deployment Instructions
 
 For this project we use .stg files for staging and .prod files for production.
@@ -115,6 +149,8 @@ For this project we use .stg files for staging and .prod files for production.
 <pre>
 sh start.stg.sh
 </pre>
+
+All the services will be deployed locally in 'leaf-image-management-system' namespace.
 
 4. Wait 2-3 minutes until all pods are running and the all the data has been loaded into the databases
 5. You can expose the ports of all services using the foolowing script: open.stg.sh
@@ -141,6 +177,34 @@ Each service has been deployed to 127.0.0.1 with ClusterIP type:
 <pre>
 sh close.stg.sh
 </pre>
+
+7. After you implemented your consumer you can deploy Prometheus cluster with Grafana, run the following script:
+
+<pre>
+sh start-metrics.stg.sh
+</pre>
+
+All the services from this script will be deployed locally in 'metrics' namespace.
+
+8. Wait 2-3 minutes until all pods are running and the all the data has been loaded into the databases
+9. You can expose the ports of all services using the foolowing script: open-metrics.stg.sh
+
+<pre>
+sh open-metrics.stg.sh
+</pre>
+
+Each service has been deployed to 127.0.0.1 with ClusterIP type:
+
+- prometheus: 9090
+- grafana: 3000
+
+10. You can close the ports using the following script:
+
+<pre>
+sh close-metrics.stg.sh
+</pre>
+
+11. In grafana you can see the dashboard showing the batch and stream processing metrics.
 
 ## Cloud (GCP)
 
