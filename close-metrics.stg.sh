@@ -16,3 +16,5 @@ kill_port_forward() {
 
 kill_port_forward 9090
 kill_port_forward 3000
+
+echo "All port-forwarding metrics have been stopped."

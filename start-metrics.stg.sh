@@ -20,5 +20,13 @@ helm install prometheus prometheus-community/kube-prometheus-stack -n metrics
 echo "Deploying Grafana"
 apply_kubectl metrics/grafana/stg/00-grafana-pvc.stg.yaml
 apply_kubectl metrics/grafana/stg/01-grafana-datasources.stg.yaml
-apply_kubectl metrics/grafana/stg/02-grafana-deployment.stg.yaml
-apply_kubectl metrics/grafana/stg/03-grafana-service.stg.yaml
+# apply_kubectl metrics/grafana/stg/02-grafana-dashboards.stg.yaml
+
+kubectl create configmap grafana-dashboards --from-file=metrics/grafana/stg/02-grafana-dashboard.stg.yaml -n metrics
+
+kubectl apply -f metrics/grafana/stg/03-grafana-dashboard-provisioning.stg.yaml
+
+apply_kubectl metrics/grafana/stg/04-grafana-deployment.stg.yaml
+apply_kubectl metrics/grafana/stg/05-grafana-service.stg.yaml
+
+
