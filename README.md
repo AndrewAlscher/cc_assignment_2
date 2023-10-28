@@ -136,6 +136,26 @@ This service visualizes metrics from Prometheus. To login to Grafana use the fol
 
 [metrics/grafana](metrics/grafana)
 
+#### Dashboard import
+
+Here is the mechanism to import the dashboard to Grafana:
+
+1. You should open Grafana and login to it. After that you should click on the '+' button and select 'Import dashboard' option.
+
+![Select import](images/2023.10.09%20-%202.jpg)
+
+2. You should add .json file from [metrics/grafana/dashboard](metrics/grafana/dashboard) folder and click on 'Load' button.
+
+![Import via panel JSON](images/2023.10.09%20-%203.jpg)
+
+3. You should skip the 'Options' section and click on 'Import' button.
+
+![Import via panel JSON - Options](images/2023.10.09%20-%204.jpg)
+
+4. You should see the imported dashboard.
+
+![Imported Dashboard](images/2023.10.09%20-%205.jpg)
+
 # Deployment Instructions
 
 For this project we use .stg files for staging and .prod files for production.
@@ -212,12 +232,18 @@ sh close-metrics.stg.sh
 
 # Delete Instructions
 
-Locally:
+Locally (for the entire system):
 
 1. Run the following script:
 
 <pre>
 sh stop.stg.sh
+</pre>
+
+2. Locally (for metrics):
+
+<pre>
+sh stop-metrics.stg.sh
 </pre>
 
 # Task
