@@ -142,19 +142,19 @@ Here is the mechanism to import the dashboard to Grafana:
 
 1. You should open Grafana and login to it. After that you should click on the '+' button and select 'Import dashboard' option.
 
-![Select import](images/2023.10.09%20-%202.jpg)
+![Select import](images/2023.10.09%20-%202.png)
 
 2. You should add .json file from [metrics/grafana/dashboard](metrics/grafana/dashboard) folder and click on 'Load' button.
 
-![Import via panel JSON](images/2023.10.09%20-%203.jpg)
+![Import via panel JSON](images/2023.10.09%20-%203.png)
 
 3. You should skip the 'Options' section and click on 'Import' button.
 
-![Import via panel JSON - Options](images/2023.10.09%20-%204.jpg)
+![Import via panel JSON - Options](images/2023.10.09%20-%204.png)
 
 4. You should see the imported dashboard.
 
-![Imported Dashboard](images/2023.10.09%20-%205.jpg)
+![Imported Dashboard](images/2023.10.09%20-%205.png)
 
 # Deployment Instructions
 
