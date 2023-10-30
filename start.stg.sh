@@ -43,7 +43,6 @@ echo "Deploying the image api"
 
 apply_kubectl basic_services/api/image_api/stg/00-image-api-deployment.stg.yaml
 apply_kubectl basic_services/api/image_api/stg/01-image-api-service.stg.yaml
-apply_kubectl basic_services/api/image_api/stg/02-image-api-service-monitor.stg.yaml
 
 echo "Deploying the image analyzer api"
 apply_kubectl basic_services/api/image_analyzer_api/stg/00-image-analyzer-api-deployment.stg.yaml
@@ -68,6 +67,5 @@ apply_kubectl basic_services/jobs/inner_jobs/leaf_disease_recognizer/stg/01-leaf
 echo "Starting the db synchronizer job"
 apply_kubectl basic_services/jobs/outer_jobs/db_synchronizer/stg/00-db-synchronizer-deployment.stg.yaml
 apply_kubectl basic_services/jobs/outer_jobs/db_synchronizer/stg/01-db-synchronizer-service.stg.yaml
-apply_kubectl basic_services/jobs/outer_jobs/db_synchronizer/stg/02-db-synchronizer-monitor.stg.yaml
 
 echo "Finished deploying the leaf image management system"
