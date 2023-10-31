@@ -8,6 +8,11 @@ apply_kubectl() {
     fi
 }
 
+check_helm_installed() {
+    helm version --short &> /dev/null
+    return $?
+}
+
 check_helm_repo() {
     repo_name=$1
     helm repo list | grep -q $repo_name
@@ -16,6 +21,14 @@ check_helm_repo() {
 
 # Deploy main namespace
 echo "Started deploying Prometheus and Grafana"
+
+# Check if helm is installed
+if check_helm_installed; then
+    echo "Helm is installed, proceeding with deployment."
+else
+    echo "Helm is not installed, please install Helm first."
+    exit 1
+fi
 
 echo "Creating the namespace"
 apply_kubectl metrics/common/00-metrics-namespace.yaml

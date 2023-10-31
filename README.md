@@ -204,7 +204,7 @@ sh close.stg.sh
 sh start-metrics.stg.sh
 </pre>
 
-All the services from this script will be deployed locally in 'metrics' namespace.
+All the services from this script will be deployed locally in 'metrics' namespace. Prometheus will be deployed using [Helm](https://helm.sh/) chart. Remember that you should [install](https://helm.sh/docs/intro/quickstart/) Helm before deploying Prometheus.
 
 8. Wait 2-3 minutes until all pods are running and the all the data has been loaded into the databases
 9. You can expose the ports of all services using the foolowing script: open-metrics.stg.sh

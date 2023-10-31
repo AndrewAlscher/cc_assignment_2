@@ -70,8 +70,6 @@ delete_kubectl service kafka-service leaf-image-management-system
 delete_kubectl deployment zookeeper leaf-image-management-system
 delete_kubectl service zookeeper leaf-image-management-system
 
-delete_kubectl servicemonitor image-api-monitor leaf-image-management-system
-
 # Delete the namespace
 echo "Delete the namespace"
 delete_kubectl namespace leaf-image-management-system

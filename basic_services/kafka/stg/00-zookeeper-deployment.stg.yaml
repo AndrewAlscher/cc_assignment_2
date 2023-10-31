@@ -23,8 +23,8 @@ spec:
             - containerPort: 2181
           resources:
             requests:
-              memory: 2048Mi
+              memory: 512Mi
               cpu: 800m
             limits:
-              memory: 4096Mi
+              memory: 1024Mi
               cpu: 900m

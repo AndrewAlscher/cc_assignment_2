@@ -6,7 +6,7 @@ delete_kubectl() {
     namespace=$3
 
     case "${resource_type}" in
-        namespace|clusterrole|clusterrolebinding|mutatingwebhookconfiguration|validatingwebhookconfiguration)
+        namespace|clusterrole|clusterrolebinding|mutatingwebhookconfiguration|validatingwebhookconfiguration|crd)
             kubectl delete "$resource_type" "$resource_name"
             ;;
         *)
@@ -19,6 +19,11 @@ delete_kubectl() {
     fi
 }
 
+echo "Delete the metrics gathering for the leaf image management system"
+echo "Delete service monitors"
+delete_kubectl servicemonitor image-api-monitor leaf-image-management-system
+delete_kubectl servicemonitor db-synchronizer-monitor leaf-image-management-system
+ 
 echo "Stopping the prometheus services in metrics namespace"
 delete_kubectl service alertmanager-operated metrics
 delete_kubectl service prometheus-grafana metrics
@@ -108,7 +113,6 @@ delete_kubectl clusterrolebinding prometheus-kube-prometheus-operator
 delete_kubectl clusterrolebinding prometheus-kube-prometheus-prometheus
 delete_kubectl clusterrolebinding prometheus-kube-state-metrics
 
-
 echo "Stopping the prometheus mutatingwebhookconfiguration"
 delete_kubectl mutatingwebhookconfiguration prometheus-kube-prometheus-admission
 
@@ -116,7 +120,21 @@ delete_kubectl mutatingwebhookconfiguration prometheus-kube-prometheus-admission
 echo "Stopping the prometheus validatingwebhookconfiguration"
 delete_kubectl validatingwebhookconfiguration prometheus-kube-prometheus-admission
 
+echo "Delete the prometheus-community helm repo"
+helm uninstall prometheus -n metrics
 
 echo "Delete the namespace metrics"
 delete_kubectl namespace metrics
+
+echo "Delete the kube-prometheus-stack helm release"
+delete_kubectl crd alertmanagerconfigs.monitoring.coreos.com
+delete_kubectl crd alertmanagers.monitoring.coreos.com
+delete_kubectl crd podmonitors.monitoring.coreos.com
+delete_kubectl crd probes.monitoring.coreos.com
+delete_kubectl crd prometheusagents.monitoring.coreos.com
+delete_kubectl crd prometheuses.monitoring.coreos.com
+delete_kubectl crd prometheusrules.monitoring.coreos.com
+delete_kubectl crd scrapeconfigs.monitoring.coreos.com
+delete_kubectl crd servicemonitors.monitoring.coreos.com
+delete_kubectl crd thanosrulers.monitoring.coreos.com
 
