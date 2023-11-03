@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "db-synchronizer"
+  namespace: "leaf-image-management-system"
+  labels:
+    app: "db-synchronizer"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "db-synchronizer"
+  template:
+    metadata:
+      labels:
+        app: "db-synchronizer"
+    spec:
+      containers:
+        - name: "db-synchronizer"
+          image: "12221994/db_synchronizer_job:latest"
+          env:
+            - name: ENV
+              value: "prod"
+          ports:
+            - containerPort: 5050
+            - containerPort: 8050
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"

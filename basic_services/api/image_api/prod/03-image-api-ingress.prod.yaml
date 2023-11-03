@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: image-api-ingress
+  namespace: leaf-image-management-system
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /ping
+            pathType: Prefix
+            backend:
+              service:
+                name: image-api
+                port:
+                  number: 8080
+          - path: /image-plant
+            pathType: Prefix
+            backend:
+              service:
+                name: image-api
+                port:
+                  number: 8080

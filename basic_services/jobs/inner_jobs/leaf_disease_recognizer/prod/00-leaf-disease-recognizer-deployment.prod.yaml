@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "leaf-disease-recognizer"
+  namespace: "leaf-image-management-system"
+  labels:
+    name: "leaf-disease-recognizer"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: "leaf-disease-recognizer"
+  template:
+    metadata:
+      labels:
+        name: "leaf-disease-recognizer"
+    spec:
+      containers:
+        - name: "leaf-disease-recognizer"
+          image: "12221994/leaf_disease_recognizer_job:latest"
+          env:
+            - name: ENV
+              value: "prod"
+          ports:
+            - containerPort: 5050
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

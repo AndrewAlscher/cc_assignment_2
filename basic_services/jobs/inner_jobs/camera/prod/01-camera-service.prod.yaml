@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "camera"
+  namespace: "leaf-image-management-system"
+spec:
+  selector:
+    name: "camera"
+  type: NodePort
+  ports:
+    - port: 5050
+      targetPort: 5050
+      nodePort: 30550
+      protocol: TCP
+      name: job-port

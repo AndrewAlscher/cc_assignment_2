@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: image-analyzer-api-ingress
+  namespace: leaf-image-management-system
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /ping
+            pathType: Prefix
+            backend:
+              service:
+                name: image-analyzer-api
+                port:
+                  number: 8080

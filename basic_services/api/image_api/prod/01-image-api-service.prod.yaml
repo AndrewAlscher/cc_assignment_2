@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "image-api"
+  namespace: "leaf-image-management-system"
+  labels:
+    app: "image-api"
+  annotations:
+    beta.cloud.google.com/backend-config: '{"default": "image-api-backendconfig"}'
+spec:
+  selector:
+    app: "image-api"
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30080
+      name: api-port
+    - name: metrics
+      protocol: TCP
+      port: 8050
+      targetPort: 8050
+      nodePort: 30050

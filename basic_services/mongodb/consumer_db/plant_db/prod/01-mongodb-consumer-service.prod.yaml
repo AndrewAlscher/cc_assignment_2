@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-consumer
+  namespace: leaf-image-management-system
+spec:
+  selector:
+    name: mongodb-consumer
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+      nodePort: 30018

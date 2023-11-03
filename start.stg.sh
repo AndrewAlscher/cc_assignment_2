@@ -39,8 +39,8 @@ apply_kubectl basic_services/mongodb/producer_db/plant_db/stg/01-mongodb-produce
 
 # Deploy the apis
 echo "Deploying the apis"
-echo "Deploying the image api"
 
+echo "Deploying the image api"
 apply_kubectl basic_services/api/image_api/stg/00-image-api-deployment.stg.yaml
 apply_kubectl basic_services/api/image_api/stg/01-image-api-service.stg.yaml
 
