@@ -23,6 +23,13 @@ spec:
                 name: image-api
                 port:
                   number: 8080
+          - path: /docs
+            pathType: Prefix
+            backend:
+              service:
+                name: image-api
+                port:
+                  number: 8080
           - path: /metrics
             pathType: Prefix
             backend:
