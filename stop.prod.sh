@@ -18,6 +18,7 @@ delete_kubectl() {
 
 echo "Stopping the leaf image management system"
 
+
 # Stop databases
 echo "Stopping the databases"
 
@@ -36,12 +37,31 @@ echo "Stopping the apis"
 echo "Stopping the image api"
 delete_kubectl deployment image-api leaf-image-management-system
 delete_kubectl service image-api leaf-image-management-system
+delete_kubectl backendconfig image-api-backendconfig leaf-image-management-system
+delete_kubectl ingress image-api-ingress leaf-image-management-system
+
+
+# Stop jobs
+echo "Stopping the jobs"
+
+echo "Stopping the camera job"
+delete_kubectl deployment camera leaf-image-management-system
+delete_kubectl service camera leaf-image-management-system
+delete_kubectl ingress camera-ingress leaf-image-management-system
+
+echo "Stopping the users job"
+delete_kubectl deployment users leaf-image-management-system
+delete_kubectl service users leaf-image-management-system
+delete_kubectl ingress users-ingress leaf-image-management-system
+
+echo "Stopping the db synchronizer job"
+delete_kubectl deployment db-synchronizer leaf-image-management-system
+delete_kubectl service db-synchronizer leaf-image-management-system
+delete_kubectl ingress db-synchronizer-ingress leaf-image-management-system
 
 
 # Delete the namespace
 echo "Delete the namespace"
 delete_kubectl namespace leaf-image-management-system
-
-kubectl delete ingress image-api-ingress -n leaf-image-management-system
 
 echo "Stopped the leaf image management system"

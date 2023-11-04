@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: image-api-ingress
+  name: db-synchronizer-ingress
   namespace: leaf-image-management-system
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -9,24 +9,17 @@ spec:
   rules:
     - http:
         paths:
-          - path: /ping
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: image-api
+                name: db-synchronizer
                 port:
-                  number: 8080
-          - path: /image-plant
-            pathType: Prefix
-            backend:
-              service:
-                name: image-api
-                port:
-                  number: 8080
+                  number: 5050
           - path: /metrics
             pathType: Prefix
             backend:
               service:
-                name: image-api
+                name: db-synchronizer
                 port:
                   number: 8050
