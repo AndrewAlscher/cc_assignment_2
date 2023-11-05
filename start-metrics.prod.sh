@@ -46,8 +46,8 @@ fi
 
 helm install prometheus prometheus-community/kube-prometheus-stack -n metrics
 
-apply_kubectl basic_services/api/image_api/prod/02-image-api-service-monitor.prod.yaml
-apply_kubectl basic_services/jobs/outer_jobs/db_synchronizer/prod/02-db-synchronizer-monitor.prod.yaml
+apply_kubectl basic_services/api/image_api/prod/04-image-api-service-monitor.prod.yaml
+apply_kubectl basic_services/jobs/outer_jobs/db_synchronizer/prod/03-db-synchronizer-monitor.prod.yaml
 
 echo "Deploying Grafana"
 apply_kubectl metrics/grafana/prod/00-grafana-pvc.prod.yaml
