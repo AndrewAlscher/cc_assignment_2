@@ -232,18 +232,32 @@ sh close-metrics.stg.sh
 
 # Delete Instructions
 
-Locally (for the entire system):
+## Locally:
 
-1. Run the following script:
+1. For the entire system:
 
 <pre>
 sh stop.stg.sh
 </pre>
 
-2. Locally (for metrics):
+2. For metrics:
 
 <pre>
 sh stop-metrics.stg.sh
+</pre>
+
+## Cloud (GCP):
+
+1. For the entire system:
+
+<pre>
+sh stop.prod.sh
+</pre>
+
+2. For metrics:
+
+<pre>
+sh stop-metrics.prod.sh
 </pre>
 
 # Task
