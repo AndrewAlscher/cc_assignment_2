@@ -206,7 +206,7 @@ sh start-metrics.stg.sh
 
 All the services from this script will be deployed locally in 'metrics' namespace. Prometheus will be deployed using [Helm](https://helm.sh/) chart. Remember that you should [install](https://helm.sh/docs/intro/quickstart/) Helm before deploying Prometheus.
 
-8. Wait 2-3 minutes until all pods are running and the all the data has been loaded into the databases
+8. Wait 7-9 minutes until all pods are running and the all the data has been loaded into the databases.
 9. You can expose the ports of all services using the foolowing script: open-metrics.stg.sh
 
 <pre>
@@ -228,7 +228,43 @@ sh close-metrics.stg.sh
 
 ## Cloud (GCP)
 
-1. Create a GKE cluster
+1. Create a GKE cluster. You can read the description file [here](report/cc_assignment_2_description.pdf).
+2. Run the following script:
+
+<pre>
+sh start.prod.sh
+</pre>
+
+All the services will be deployed to 'leaf-image-management-system' namespace.
+
+3. Wait 7-9 minutes until all pods are running and the all the data has been loaded into the databases.
+4. GKE deploys services with NodePort type. The external IP addresses of the services are:
+
+- image_api: 30080
+- image_api_prometheus: 30051
+- image_analizer_api: - (not deployed)
+- camera: 30550
+- leaf_disease_recognizer: - (not deployed)
+- users: 30551
+- db_synchronizer: 30552
+- db_synchronizer_prometheus: 30051
+- producer_db: 30017
+- consumer_db: 30018
+
+As you can see, image_analizer_api and leaf_disease_recognizer are not deployed to GKE. It is because we do not use GPU for this project.
+
+4. For the port exposing this schema uses ingress.
+5. After you implemented your consumer you can deploy Prometheus cluster with Grafana, run the following script:
+
+<pre>
+sh start-metrics.prod.sh
+</pre>
+
+All the services from this script will be deployed to 'metrics' namespace. Prometheus will be deployed using [Helm](https://helm.sh/) chart.
+
+6. Wait 2-3 minutes until all pods are running and the all the data has been loaded into the databases.
+7. GKE deploys Grafana with LoadBalancer type.
+8. In Grafana you can add the dashboard showing the batch and stream processing metrics.
 
 # Delete Instructions
 
