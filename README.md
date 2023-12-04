@@ -261,8 +261,8 @@ kubectl get nodes -o wide
 4.2 Connect to the service using the following address:
 your_external_ip:service_port
 
-4. For the port exposing this schema uses ingress.
-5. After you implemented your consumer you can deploy Prometheus cluster with Grafana, run the following script:
+5. For the port exposing this schema uses ingress.
+6. After you implemented your consumer you can deploy Prometheus cluster with Grafana, run the following script:
 
 <pre>
 sh start-metrics.prod.sh
@@ -270,9 +270,9 @@ sh start-metrics.prod.sh
 
 All the services from this script will be deployed to 'metrics' namespace. Prometheus will be deployed using [Helm](https://helm.sh/) chart.
 
-6. Wait 2-3 minutes until all pods are running and the all the data has been loaded into the databases.
-7. GKE deploys Grafana with LoadBalancer type.
-8. In Grafana you can add the dashboard showing the batch and stream processing metrics.
+7. Wait 2-3 minutes until all pods are running and the all the data has been loaded into the databases.
+8. GKE deploys Grafana with LoadBalancer type.
+9. In Grafana you can add the dashboard showing the batch and stream processing metrics.
 
 # Delete Instructions
 
