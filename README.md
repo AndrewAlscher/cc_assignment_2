@@ -232,7 +232,7 @@ sh close-metrics.stg.sh
 2. Run the following script:
 
 <pre>
-sh start.prod.sh
+sh start.prod.sh your_project_id
 </pre>
 
 All the services will be deployed to 'leaf-image-management-system' namespace.
@@ -252,6 +252,14 @@ All the services will be deployed to 'leaf-image-management-system' namespace.
 - consumer_db: 30018
 
 As you can see, image_analizer_api and leaf_disease_recognizer are not deployed to GKE. It is because we do not use GPU for this project.
+
+You can connect to the services using the following command:
+
+4.1 Find out the external IP address of the service:
+kubectl get nodes -o wide
+
+4.2 Connect to the service using the following address:
+your_external_ip:service_port
 
 4. For the port exposing this schema uses ingress.
 5. After you implemented your consumer you can deploy Prometheus cluster with Grafana, run the following script:
