@@ -6,7 +6,7 @@
 
 For detailed information about the system architecture, please refer to the [overview report](report/cc_assignment_2_overview.pdf).
 
-There is some additional infomration for each service below:
+There is some additional information for each service below:
 
 ## APIs
 
@@ -164,6 +164,18 @@ For this project we use .stg files for staging and .prod files for production.
 
 1. Install minikube
 2. Start minikube
+
+<pre>
+minikube start
+</pre>
+
+You can change the context to minikube using the following command:
+<pre>
+kubectl config view
+kubectl config current-context
+kubectl config use-context minikube
+</pre>
+
 3. Run the following script:
 
 <pre>
@@ -205,6 +217,13 @@ sh start-metrics.stg.sh
 </pre>
 
 All the services from this script will be deployed locally in 'metrics' namespace. Prometheus will be deployed using [Helm](https://helm.sh/) chart. Remember that you should [install](https://helm.sh/docs/intro/quickstart/) Helm before deploying Prometheus.
+
+If you have already installed Helm, you can deploy Prometheus calling the following command before running the script:
+
+<pre>
+helm repo update
+</pre>
+
 
 8. Wait 7-9 minutes until all pods are running and the all the data has been loaded into the databases.
 9. You can expose the ports of all services using the foolowing script: open-metrics.stg.sh
