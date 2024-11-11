@@ -2,7 +2,7 @@
 
 # Services
 
-![The entire system](images/2023.10.09%20-%201.jpg)
+![The entire system](images/2023.11.11%20-%201.jpg)
 
 For detailed information about the system architecture, please refer to the [overview report](report/cc_assignment_2_overview.pdf).
 
